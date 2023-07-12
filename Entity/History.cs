@@ -1,8 +1,9 @@
-﻿
+﻿using Microsoft.AspNetCore.Identity;
+using web_scraping.Entity;
 
 namespace web_scraping.Entity
 {
-    class History
+    public class History
     {
         public int Id { get; set; }
         public required string CompanyName { get; set; }

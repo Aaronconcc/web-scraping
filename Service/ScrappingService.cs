@@ -1,7 +1,7 @@
 using HtmlAgilityPack;
 using System.Net;
 
-class ScrappingService
+public class ScrappingService
 {
   private readonly string _baseUrl;
 
@@ -35,7 +35,7 @@ class ScrappingService
 
   }
 
-  async public Task<int> ParseHtml(string companyName)
+  async public Task<int> GetResults(string companyName)
   {
     HtmlDocument htmlDoc = new HtmlDocument();
 
