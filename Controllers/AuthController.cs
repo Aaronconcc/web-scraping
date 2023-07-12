@@ -32,7 +32,7 @@ public class AuthController : ControllerBase
         }
         var user = await _userManager.CreateAsync(new User
         {
-            UserName = request.Username,
+            UserName = request.UserName,
             Email = request.Email,
             FirstName = request.FirstName,
             LastName = request.LastName
