@@ -2,7 +2,8 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Identity.Client;
 using Microsoft.EntityFrameworkCore;
-using Azure.Core;
+using web_scraping;
+using be_scrapping;
 
 namespace web_scraping.Controllers;
 [ApiController]
@@ -32,7 +33,7 @@ public class AuthController : ControllerBase
         }
         var user = await _userManager.CreateAsync(new User
         {
-            UserName = request.Username,
+            UserName = request.UserName,
             Email = request.Email,
             FirstName = request.FirstName,
             LastName = request.LastName
@@ -86,7 +87,7 @@ public class AuthController : ControllerBase
 
         return Ok(new AuthResponse
         {
-            Username = user.UserName,
+            UserName = user.UserName,
             Email = request.Email,
             Token = Token
         });
