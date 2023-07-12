@@ -1,19 +1,19 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
+using web_scraping.Entity;
 
 class ScrapingContext : IdentityUserContext<User>
 {
     private readonly IConfiguration _config;
-    public ScrapingContext(IConfiguration config)
-    {
-        _config = config;
-    }
+
     public ScrapingContext(DbContextOptions<ScrapingContext> options, IConfiguration config)
         : base(options)
     {
         _config = config;
     }
+
+    public DbSet<History> Histories {get; set;}
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
