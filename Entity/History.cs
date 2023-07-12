@@ -1,7 +1,4 @@
-﻿using Microsoft.AspNetCore.Identity;
-using web_scraping.Entity;
-
-namespace web_scraping.Entity
+﻿namespace web_scraping.Entity
 {
     public class History
     {
