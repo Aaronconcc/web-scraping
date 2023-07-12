@@ -8,6 +8,6 @@ class User : IdentityUser
 
     public ICollection<History>? Histories { get; set;}
 
-    }
+}
     
 
