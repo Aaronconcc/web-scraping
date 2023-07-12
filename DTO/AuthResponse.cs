@@ -2,10 +2,10 @@
 
     public class AuthResponse
     {  
-        public required string Email;
+        public required string Email { get; set; } = null!;
 
-        public required string UserName;
+    public required string UserName { get; set; } = null!;
 
-        public required string Token;
-    }
+    public required string Token { get; set; } = null!;
+}
 
