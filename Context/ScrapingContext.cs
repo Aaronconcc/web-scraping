@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 using web_scraping.Entity;
 
-class ScrapingContext : IdentityUserContext<User>
+public class ScrapingContext : IdentityUserContext<User>
 {
     private readonly IConfiguration _config;
 
