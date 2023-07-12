@@ -27,22 +27,41 @@ namespace web_scraping.Controllers
  
         }
 
-        [HttpPost,Authorize]
-        [Route("scrap")]
+        [HttpPost, Authorize]
         async public Task<IActionResult> Scrap(string companyName)
         {
             ScrappingService scrappingService = new ScrappingService("https://www.occ.com.mx/");
+            
+            int jobsCount =  await scrappingService.GetResults(companyName);
 
-            var history = _scrapingContext.Histories.Add(new History
+            _scrapingContext.Histories.Add(new History
             {
                 CompanyName = companyName,
-                JobsCount = await scrappingService.GetResults(companyName),
+                JobsCount = jobsCount,
                 UserId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value
             });
             await _scrapingContext.SaveChangesAsync();
 
-            return Ok(history);
+            return Ok(new{
+                JobsCount = jobsCount,
+                CompanyName = companyName
+            });
         }
+
+        [HttpGet, Authorize]
+        public object GetHistory(int page) => new {
+            Info = new {
+            total = _scrapingContext.Histories
+                .Where(history => history.UserId.Equals(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+                .Count()
+            },
+            results = _scrapingContext.Histories
+                .OrderByDescending(history => history.UserId)
+                .Where(history => history.UserId.Equals(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+                .Skip(page * 10)
+                .Take(10)
+                .ToList()
+        };
 
     }
 }

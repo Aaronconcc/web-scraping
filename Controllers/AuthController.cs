@@ -1,8 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.Identity.Client;
-using Microsoft.EntityFrameworkCore;
-using web_scraping;
+
 using be_scrapping;
 
 namespace web_scraping.Controllers;
