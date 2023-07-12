@@ -17,7 +17,7 @@ namespace Test.Services
         [Test]
         async public Task IsCountNumber()
         {
-          var result = await _scrappingService.ParseHtml("cocaCola");
+          var result = await _scrappingService.GetResults("cocaCola");
 
           Assert.Greater(result, 0);
         }
