@@ -21,7 +21,7 @@ public class ScrappingService
   }
 
   private string getInnerText(HtmlNode node, string xpath){
-    return node.SelectSingleNode(xpath).InnerText.ToString();
+    return node.SelectSingleNode(xpath)?.InnerText.ToString() ?? "0";
   }
 
   private int parseJobsCount(string rawJobCounts){
