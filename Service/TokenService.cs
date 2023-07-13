@@ -49,7 +49,7 @@ public class TokenService
 
     private SigningCredentials SingningCredentials() => new SigningCredentials(
          new SymmetricSecurityKey(Encoding.UTF8.GetBytes("a5e5a0e4bc817ef2774d841c0d300847b3212d96a49a3fe849ecf65d51dadb11a5e5a0e4bc817ef2774d841c0d300847b3212d96a49a3fe849ecf65d51dadb11a5e5a0e4bc817ef2774d841c0d300847b3212d96a49a3fe849ecf65d51dadb11")),
-            SecurityAlgorithms.Sha256
+            SecurityAlgorithms.HmacSha256
         );
     
        
