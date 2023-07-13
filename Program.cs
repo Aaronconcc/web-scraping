@@ -9,6 +9,20 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<ScrapingContext>();
 
 builder.Services.AddScoped<TokenService, TokenService>();
+
+builder.Services.AddCors(op=>
+{
+    op.AddPolicy(
+        name: "*",
+        policy => 
+        {
+            policy.WithOrigins("http://localhost:5173")
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+        }
+    );
+});
+
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
